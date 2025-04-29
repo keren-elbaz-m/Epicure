@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "meal_times",
+  "info": {
+    "singularName": "meal-time",
+    "pluralName": "meal-times",
+    "displayName": "MealTime"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dishes",
+  "info": {
+    "singularName": "dish",
+    "pluralName": "dishes",
+    "displayName": "Dish"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "dish_changes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dish-change.dish-change"
+    },
+    "dish_types": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dish-type.dish-type"
+    },
+    "side_dishes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::side-dish.side-dish"
+    },
+    "meal_times": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::meal-time.meal-time"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "ingredients": {
+      "type": "text"
+    },
+    "price": {
+      "type": "decimal"
+    }
+  }
+}

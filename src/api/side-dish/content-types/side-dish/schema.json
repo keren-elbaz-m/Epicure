@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "side_dishes",
+  "info": {
+    "singularName": "side-dish",
+    "pluralName": "side-dishes",
+    "displayName": "SideDish"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
