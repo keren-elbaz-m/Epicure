@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dish_types",
+  "info": {
+    "singularName": "dish-type",
+    "pluralName": "dish-types",
+    "displayName": "DishType",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "dish": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dish.dish",
+      "inversedBy": "dish_type"
+    }
+  }
+}

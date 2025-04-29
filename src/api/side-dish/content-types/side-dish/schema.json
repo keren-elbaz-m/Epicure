@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "side_dishes",
+  "info": {
+    "singularName": "side-dish",
+    "pluralName": "side-dishes",
+    "displayName": "SideDish",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "dish": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dish.dish",
+      "mappedBy": "side_dish"
+    }
+  }
+}
