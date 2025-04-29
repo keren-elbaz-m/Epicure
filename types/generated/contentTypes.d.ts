@@ -419,7 +419,7 @@ export interface ApiDishTypeDishType extends Struct.CollectionTypeSchema {
       'api::dish-type.dish-type'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -474,6 +474,7 @@ export interface ApiDishDish extends Struct.CollectionTypeSchema {
 export interface ApiMealTimeMealTime extends Struct.CollectionTypeSchema {
   collectionName: 'meal_times';
   info: {
+    description: '';
     displayName: 'MealTime';
     pluralName: 'meal-times';
     singularName: 'meal-time';
@@ -491,7 +492,7 @@ export interface ApiMealTimeMealTime extends Struct.CollectionTypeSchema {
       'api::meal-time.meal-time'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -502,6 +503,7 @@ export interface ApiMealTimeMealTime extends Struct.CollectionTypeSchema {
 export interface ApiSideDishSideDish extends Struct.CollectionTypeSchema {
   collectionName: 'side_dishes';
   info: {
+    description: '';
     displayName: 'SideDish';
     pluralName: 'side-dishes';
     singularName: 'side-dish';
@@ -519,7 +521,7 @@ export interface ApiSideDishSideDish extends Struct.CollectionTypeSchema {
       'api::side-dish.side-dish'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
