@@ -4,48 +4,59 @@
   "info": {
     "singularName": "dish",
     "pluralName": "dishes",
-    "displayName": "Dish"
+    "displayName": "Dish",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "dish_changes": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::dish-change.dish-change"
     },
-    "dish_types": {
+    "dish_type": {
+      "required": true,
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::dish-type.dish-type"
+      "relation": "oneToOne",
+      "target": "api::dish-type.dish-type",
+      "inversedBy": "dish"
     },
-    "side_dishes": {
+    "side_dish": {
+      "required": true,
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::side-dish.side-dish"
+      "relation": "oneToOne",
+      "target": "api::side-dish.side-dish",
+      "inversedBy": "dish"
     },
-    "meal_times": {
+    "meal_time": {
+      "required": true,
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::meal-time.meal-time"
+      "relation": "oneToOne",
+      "target": "api::meal-time.meal-time",
+      "inversedBy": "dish"
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "ingredients": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "price": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     }
   }
 }

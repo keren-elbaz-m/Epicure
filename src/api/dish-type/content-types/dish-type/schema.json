@@ -22,6 +22,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "dish": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dish.dish",
+      "inversedBy": "dish_type"
     }
   }
 }

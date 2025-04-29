@@ -412,6 +412,7 @@ export interface ApiDishTypeDishType extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dish: Schema.Attribute.Relation<'oneToOne', 'api::dish.dish'>;
     icon: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -430,6 +431,7 @@ export interface ApiDishTypeDishType extends Struct.CollectionTypeSchema {
 export interface ApiDishDish extends Struct.CollectionTypeSchema {
   collectionName: 'dishes';
   info: {
+    description: '';
     displayName: 'Dish';
     pluralName: 'dishes';
     singularName: 'dish';
@@ -445,26 +447,31 @@ export interface ApiDishDish extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::dish-change.dish-change'
     >;
-    dish_types: Schema.Attribute.Relation<
-      'oneToMany',
+    dish_type: Schema.Attribute.Relation<
+      'oneToOne',
       'api::dish-type.dish-type'
-    >;
+    > &
+      Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    ingredients: Schema.Attribute.Text;
+    ingredients: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::dish.dish'> &
       Schema.Attribute.Private;
-    meal_times: Schema.Attribute.Relation<
-      'oneToMany',
+    meal_time: Schema.Attribute.Relation<
+      'oneToOne',
       'api::meal-time.meal-time'
-    >;
-    name: Schema.Attribute.String;
-    price: Schema.Attribute.Decimal;
+    > &
+      Schema.Attribute.Required;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    side_dishes: Schema.Attribute.Relation<
-      'oneToMany',
+    side_dish: Schema.Attribute.Relation<
+      'oneToOne',
       'api::side-dish.side-dish'
-    >;
+    > &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -486,6 +493,7 @@ export interface ApiMealTimeMealTime extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dish: Schema.Attribute.Relation<'oneToOne', 'api::dish.dish'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -515,6 +523,7 @@ export interface ApiSideDishSideDish extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dish: Schema.Attribute.Relation<'oneToOne', 'api::dish.dish'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
