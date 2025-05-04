@@ -1,7 +1,7 @@
-export type errorCode = 400 | 401 | 403 | 404 | 409 | 422|  500;
+export type ErrorCode = 400 | 401 | 403 | 404 | 422|  500;
 
 export type IErrorMessage = {
-    [key in errorCode]:{
+    [key in ErrorCode]:{
         devMessage: string;
         clientMessage: string;
     }
@@ -23,10 +23,6 @@ export const errorMessages: IErrorMessage = {
     404: {
         devMessage: "Not Found: Resource does not exist.",
         clientMessage: "We couldn't find what you were looking for.",
-    },
-    409: {
-        devMessage: "Conflict: Resource already exists or conflict occurred.",
-        clientMessage: "This item already exists or cannot be changed now.",
     },
     422: {
         devMessage: "Unprocessable Entity: Invalid data or missing fields.",
