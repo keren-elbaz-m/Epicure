@@ -1,23 +1,24 @@
-import { errorMessages, errorCode } from "../types/errorTypes";
+import { ErrorCode } from "../types/errorTypes";
 
 export interface IErrorResponse{
-    statusCodeNumber: number;
+    statusCodeNumber: ErrorCode;
     devMessage: string;
-    clientMessage: string;
+    clientMessage?: string;
 }
 
-export function handleError( statusCodeNumber: errorCode, customDevMessage?: string): IErrorResponse{
-    const unknownError = {
-        devMessage: "An unknown error occurred.",
-        clientMessage: "An unknown error occurred.",
-    };
+export function handleError( statusCodeNumber: ErrorCode, error?: unknown, clientMessage?:string): IErrorResponse{ 
+    let devMessage = "An unknown error occurred.";
 
-    const errorMessage = errorMessages[statusCodeNumber] || unknownError;
+    if (error instanceof Error) {
+        devMessage = error.message;
+    }else if(typeof error === 'string'){
+        devMessage = error;
+    }
 
     return {
         statusCodeNumber,
-        devMessage: customDevMessage ?? errorMessage.devMessage,
-        clientMessage: errorMessage.clientMessage,
+        devMessage,
+        clientMessage,
     };
 }
 
